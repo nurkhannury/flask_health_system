@@ -3,13 +3,13 @@ from models import db, PublicServant, Users
 
 publicservants = Blueprint('publicservants', __name__, url_prefix='/publicservants')
 
-# List all public servants
+# list all public servants
 @publicservants.route('/')
 def list_publicservants():
     publicservants = PublicServant.query.all()
     return render_template('publicservants.html', publicservants=publicservants)
 
-# Add a new public servant
+# add a new public servant
 @publicservants.route('/add', methods=['GET', 'POST'])
 def add_publicservant():
     if request.method == 'POST':
@@ -25,7 +25,7 @@ def add_publicservant():
     users = Users.query.all()
     return render_template('add_publicservant.html', users=users)
 
-# Delete a public servant
+# delete a public servant
 @publicservants.route('/delete/<string:email>', methods=['POST'])
 def delete_publicservant(email):
     publicservant = PublicServant.query.get(email)

@@ -3,13 +3,13 @@ from models import db, Country
 
 countries = Blueprint('countries', __name__)
 
-# List all countries
+# list all countries
 @countries.route('/countries')
 def list_countries():
     countries = Country.query.all()
     return render_template('countries.html', countries=countries)
 
-# Add a new country
+# add a new country
 @countries.route('/countries/add', methods=['GET', 'POST'])
 def add_country():
     if request.method == 'POST':
@@ -21,7 +21,7 @@ def add_country():
         return redirect(url_for('routes.countries.list_countries'))
     return render_template('add_country.html')
 
-# Delete a country
+# delete a country
 @countries.route('/countries/delete/<string:cname>', methods=['POST'])
 def delete_country(cname):
     country = Country.query.get(cname)

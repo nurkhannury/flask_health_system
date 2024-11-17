@@ -2,6 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
+# setting classes for each table in the database to ensure connection
 class Users(db.Model):
     email = db.Column(db.String(60), primary_key=True)
     name = db.Column(db.String(30))
@@ -17,14 +19,14 @@ class Patients(db.Model):
     email = db.Column(db.String(60), db.ForeignKey('users.email', ondelete="CASCADE"), primary_key=True)
 
 class DiseaseType(db.Model):
-    __tablename__ = 'diseasetype'  # Explicitly set the table name
+    __tablename__ = 'diseasetype'
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(140))
 
 
 
 class Disease(db.Model):
-    __tablename__ = 'disease'  # Optional: explicitly set the table name if needed
+    __tablename__ = 'disease'
     disease_code = db.Column(db.String(50), primary_key=True)
     pathogen = db.Column(db.String(20))
     description = db.Column(db.String(140))
@@ -37,18 +39,18 @@ class Discover(db.Model):
     first_enc_date = db.Column(db.Date)
 
 class PatientDisease(db.Model):
-    __tablename__ = 'patientdisease'  # Explicitly set the table name
+    __tablename__ = 'patientdisease'
     email = db.Column(db.String(60), db.ForeignKey('users.email', ondelete="CASCADE"), primary_key=True)
     disease_code = db.Column(db.String(50), db.ForeignKey('disease.disease_code', ondelete="CASCADE"), primary_key=True)
 
 class PublicServant(db.Model):
-    __tablename__ = 'publicservant'  # Matches the table name in the database
+    __tablename__ = 'publicservant'
     email = db.Column(db.String(60), db.ForeignKey('users.email', ondelete="CASCADE"), primary_key=True)
     department = db.Column(db.String(50), nullable=False)
 
 
 class Doctor(db.Model):
-    __tablename__ = 'doctor'  # Matches the table name in the database
+    __tablename__ = 'doctor'
     email = db.Column(db.String(60), db.ForeignKey('users.email', ondelete="CASCADE"), primary_key=True)
     degree = db.Column(db.String(20), nullable=False)
 

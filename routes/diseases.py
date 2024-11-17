@@ -3,13 +3,13 @@ from models import db, Disease, DiseaseType
 
 diseases = Blueprint('diseases', __name__, url_prefix='/diseases')
 
-# List all diseases
+# list all diseases
 @diseases.route('/')
 def list_diseases():
     diseases = Disease.query.all()
     return render_template('diseases.html', diseases=diseases)
 
-# Add a new disease
+# add a new disease
 @diseases.route('/add', methods=['GET', 'POST'])
 def add_disease():
     if request.method == 'POST':
@@ -27,7 +27,7 @@ def add_disease():
     diseasetypes = DiseaseType.query.all()
     return render_template('add_disease.html', diseasetypes=diseasetypes)
 
-# Delete a disease
+# delete a disease
 @diseases.route('/delete/<string:disease_code>', methods=['POST'])
 def delete_disease(disease_code):
     disease = Disease.query.get(disease_code)

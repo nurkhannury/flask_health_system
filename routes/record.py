@@ -3,13 +3,13 @@ from models import db, Record, PublicServant, Country, Disease
 
 record = Blueprint('record', __name__, url_prefix='/record')
 
-# List all records
+# list all records
 @record.route('/')
 def list_record():
     records = Record.query.all()
     return render_template('record.html', records=records)
 
-# Add a record
+# add a record
 @record.route('/add', methods=['GET', 'POST'])
 def add_record():
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def add_record():
     diseases = Disease.query.all()
     return render_template('add_record.html', publicservants=publicservants, countries=countries, diseases=diseases)
 
-# Delete a record
+# delete a record
 @record.route('/delete/<string:email>/<string:cname>/<string:disease_code>', methods=['POST'])
 def delete_record(email, cname, disease_code):
     record = Record.query.get((email, cname, disease_code))

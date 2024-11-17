@@ -3,18 +3,17 @@ from models import db, Patients, Users
 
 patients = Blueprint('patients', __name__)
 
-# List all patients
+# list all patients
 @patients.route('/patients')
 def list_patients():
     patients = Patients.query.all()
     return render_template('patients.html', patients=patients)
 
-# Add a new patient
+# add a new patient
 @patients.route('/patients/add', methods=['GET', 'POST'])
 def add_patient():
     if request.method == 'POST':
         email = request.form['email']
-        # Ensure the email exists in Users
         user = Users.query.get(email)
         if user:
             new_patient = Patients(email=email)
@@ -23,10 +22,10 @@ def add_patient():
             return redirect(url_for('routes.patients.list_patients'))
         return "User with the given email does not exist.", 400
 
-    users = Users.query.all()  # To list available users
+    users = Users.query.all()
     return render_template('add_patient.html', users=users)
 
-# Delete a patient
+# delete a patient
 @patients.route('/patients/delete/<string:email>', methods=['POST'])
 def delete_patient(email):
     patient = Patients.query.get(email)

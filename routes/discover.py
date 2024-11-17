@@ -4,14 +4,14 @@ from models import db, Discover, Country, Disease
 discovers = Blueprint('discovers', __name__, url_prefix='/discovers')
 
 
-# List all discover entries
+# list all discover entries
 @discovers.route('/')
 def list_discovers():
     discovers = Discover.query.all()
     return render_template('discovers.html', discovers=discovers)
 
 
-# Add a new discover entry
+# add a new discover entry
 @discovers.route('/add', methods=['GET', 'POST'])
 def add_discover():
     if request.method == 'POST':
@@ -29,7 +29,7 @@ def add_discover():
     return render_template('add_discover.html', countries=countries, diseases=diseases)
 
 
-# Delete a discover entry
+# delete a discover entry
 @discovers.route('/delete/<string:cname>/<string:disease_code>', methods=['POST'])
 def delete_discover(cname, disease_code):
     discover = Discover.query.get((cname, disease_code))

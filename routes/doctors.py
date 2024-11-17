@@ -3,13 +3,13 @@ from models import db, Doctor, Users
 
 doctors = Blueprint('doctors', __name__, url_prefix='/doctors')
 
-# List all doctors
+# list all doctors
 @doctors.route('/')
 def list_doctors():
     doctors = Doctor.query.all()
     return render_template('doctors.html', doctors=doctors)
 
-# Add a new doctor
+# add a new doctor
 @doctors.route('/add', methods=['GET', 'POST'])
 def add_doctor():
     if request.method == 'POST':
@@ -25,7 +25,7 @@ def add_doctor():
     users = Users.query.all()
     return render_template('add_doctor.html', users=users)
 
-# Delete a doctor
+# delete a doctor
 @doctors.route('/delete/<string:email>', methods=['POST'])
 def delete_doctor(email):
     doctor = Doctor.query.get(email)

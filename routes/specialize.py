@@ -3,13 +3,13 @@ from models import db, Specialize, DiseaseType, Doctor
 
 specialize = Blueprint('specialize', __name__, url_prefix='/specialize')
 
-# List all specializations
+# list all specializations
 @specialize.route('/')
 def list_specialize():
     specializations = Specialize.query.all()
     return render_template('specialize.html', specializations=specializations)
 
-# Add a specialization
+# add a specialization
 @specialize.route('/add', methods=['GET', 'POST'])
 def add_specialize():
     if request.method == 'POST':
@@ -28,7 +28,7 @@ def add_specialize():
     doctors = Doctor.query.all()
     return render_template('add_specialize.html', diseasetypes=diseasetypes, doctors=doctors)
 
-# Delete a specialization
+# delete a specialization
 @specialize.route('/delete/<int:id>/<string:email>', methods=['POST'])
 def delete_specialize(id, email):
     specialization = Specialize.query.get((id, email))
