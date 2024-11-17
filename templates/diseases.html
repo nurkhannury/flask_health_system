@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diseases</title>
+</head>
+<body>
+    <h1>Diseases</h1>
+    <a href="{{ url_for('routes.diseases.add_disease') }}">Add Disease</a>
+    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 20px; width: 80%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Disease Code</th>
+                <th>Pathogen</th>
+                <th>Description</th>
+                <th>Disease Type ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for disease in diseases %}
+            <tr>
+                <td>{{ disease.disease_code }}</td>
+                <td>{{ disease.pathogen }}</td>
+                <td>{{ disease.description }}</td>
+                <td>{{ disease.id }}</td>
+                <td>
+                    <form action="{{ url_for('routes.diseases.delete_disease', disease_code=disease.disease_code) }}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

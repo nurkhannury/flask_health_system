@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Records</title>
+</head>
+<body>
+    <h1>Records</h1>
+    <a href="{{ url_for('routes.record.add_record') }}">Add Record</a>
+    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 20px; width: 90%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Country Name</th>
+                <th>Disease Code</th>
+                <th>Total Deaths</th>
+                <th>Total Patients</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.email }}</td>
+                <td>{{ record.cname }}</td>
+                <td>{{ record.disease_code }}</td>
+                <td>{{ record.total_deaths }}</td>
+                <td>{{ record.total_patients }}</td>
+                <td>
+                    <form action="{{ url_for('routes.record.delete_record', email=record.email, cname=record.cname, disease_code=record.disease_code) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

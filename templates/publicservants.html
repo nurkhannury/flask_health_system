@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Public Servants</title>
+</head>
+<body>
+    <h1>Public Servants</h1>
+    <a href="{{ url_for('routes.publicservants.add_publicservant') }}">Add Public Servant</a>
+    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 20px; width: 80%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for publicservant in publicservants %}
+            <tr>
+                <td>{{ publicservant.email }}</td>
+                <td>{{ publicservant.department }}</td>
+                <td>
+                    <form action="{{ url_for('routes.publicservants.delete_publicservant', email=publicservant.email) }}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

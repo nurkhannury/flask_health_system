@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Disease</title>
+</head>
+<body>
+    <h1>Add Disease</h1>
+    <form action="{{ url_for('routes.diseases.add_disease') }}" method="post">
+        <label for="disease_code">Disease Code:</label>
+        <input type="text" id="disease_code" name="disease_code" required>
+        <label for="pathogen">Pathogen:</label>
+        <input type="text" id="pathogen" name="pathogen" required>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required>
+        <label for="id">Disease Type ID:</label>
+        <select id="id" name="id" required>
+            {% for diseasetype in diseasetypes %}
+            <option value="{{ diseasetype.id }}">{{ diseasetype.description }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countries</title>
+</head>
+<body>
+    <h1>Countries</h1>
+    <a href="{{ url_for('routes.countries.add_country') }}">Add Country</a>
+    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 20px; width: 80%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Country Name</th>
+                <th>Population</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countries %}
+            <tr>
+                <td>{{ country.cname }}</td>
+                <td>{{ country.population }}</td>
+                <td>
+                    <form action="{{ url_for('routes.countries.delete_country', cname=country.cname) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

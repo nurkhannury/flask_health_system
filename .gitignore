@@ -1,0 +1,11 @@
+# created by virtualenv automatically
+# Ignore virtual environment and system files
+venv/
+.DS_Store
+__pycache__/
+.idea/
+
+# Ignore other unnecessary files
+*.log
+*.sqlite3
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Public Servant</title>
+</head>
+<body>
+    <h1>Add Public Servant</h1>
+    <form action="{{ url_for('routes.publicservants.add_publicservant') }}" method="post">
+        <label for="email">Email:</label>
+        <select id="email" name="email" required>
+            {% for user in users %}
+            <option value="{{ user.email }}">{{ user.email }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required>
+        <br><br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

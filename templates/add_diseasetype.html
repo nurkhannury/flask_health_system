@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Disease Type</title>
+</head>
+<body>
+    <h1>Add Disease Type</h1>
+    <form action="{{ url_for('routes.diseasetypes.add_diseasetype') }}" method="post">
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required><br><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required><br><br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

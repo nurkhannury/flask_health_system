@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patients</title>
+</head>
+<body>
+    <h1>Patients</h1>
+    <a href="{{ url_for('routes.patients.add_patient') }}">Add Patient</a>
+    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 20px; width: 50%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.email }}</td>
+                <td>
+                    <form action="{{ url_for('routes.patients.delete_patient', email=patient.email) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

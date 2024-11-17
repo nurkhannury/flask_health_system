@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Discover</title>
+</head>
+<body>
+    <h1>Add Discover Record</h1>
+    <form action="{{ url_for('routes.discovers.add_discover') }}" method="post">
+        <label for="cname">Country:</label>
+        <select id="cname" name="cname">
+            {% for country in countries %}
+            <option value="{{ country.cname }}">{{ country.cname }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="disease_code">Disease Code:</label>
+        <select id="disease_code" name="disease_code">
+            {% for disease in diseases %}
+            <option value="{{ disease.disease_code }}">{{ disease.disease_code }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="first_enc_date">First Encounter Date:</label>
+        <input type="date" id="first_enc_date" name="first_enc_date" required><br><br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health System App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 200px;
+            text-align: center;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Health System App</h1>
+        <ul>
+            <li><a href="{{ url_for('routes.users.list_users') }}">Manage Users</a></li>
+            <li><a href="{{ url_for('routes.countries.list_countries') }}">Manage Countries</a></li>
+            <li><a href="{{ url_for('routes.patients.list_patients') }}">Manage Patients</a></li>
+            <li><a href="{{ url_for('routes.diseasetypes.list_diseasetypes') }}">Manage Disease Types</a></li>
+            <li><a href="{{ url_for('routes.diseases.list_diseases') }}">Manage Diseases</a></li>
+            <li><a href="{{ url_for('routes.discovers.list_discovers') }}">Manage Discover Records</a></li>
+            <li><a href="{{ url_for('routes.patientdisease.list_patientdisease') }}">Manage Patient Diseases</a></li>
+            <li><a href="{{ url_for('routes.publicservants.list_publicservants') }}">Manage Public Servants</a></li>
+            <li><a href="{{ url_for('routes.doctors.list_doctors') }}">Manage Doctors</a></li>
+            <li><a href="{{ url_for('routes.specialize.list_specialize') }}">Manage Specializations</a></li>
+            <li><a href="{{ url_for('routes.record.list_record') }}">Manage Records</a></li>
+        </ul>
+    </div>
+</body>
+</html>

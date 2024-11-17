@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users</title>
+</head>
+<body>
+    <h1>Users</h1>
+    <a href="{{ url_for('routes.users.add_user') }}">Add User</a>
+    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 20px; width: 80%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Salary</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.surname }}</td>
+                <td>{{ user.salary }}</td>
+                <td>{{ user.phone }}</td>
+                <td>
+                    <a href="{{ url_for('routes.users.edit_user', email=user.email) }}">Edit</a>
+                    <form action="{{ url_for('routes.users.delete_user', email=user.email) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Specializations</title>
+</head>
+<body>
+    <h1>Specializations</h1>
+    <a href="{{ url_for('routes.specialize.add_specialize') }}">Add Specialization</a>
+    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 20px; width: 80%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Disease Type ID</th>
+                <th>Doctor Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for specialization in specializations %}
+            <tr>
+                <td>{{ specialization.id }}</td>
+                <td>{{ specialization.email }}</td>
+                <td>
+                    <form action="{{ url_for('routes.specialize.delete_specialize', id=specialization.id, email=specialization.email) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

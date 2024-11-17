@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Specialization</title>
+</head>
+<body>
+    <h1>Add Specialization</h1>
+    <form action="{{ url_for('routes.specialize.add_specialize') }}" method="post">
+        <label for="id">Disease Type ID:</label>
+        <select id="id" name="id" required>
+            {% for diseasetype in diseasetypes %}
+            <option value="{{ diseasetype.id }}">{{ diseasetype.id }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="email">Doctor Email:</label>
+        <select id="email" name="email" required>
+            {% for doctor in doctors %}
+            <option value="{{ doctor.email }}">{{ doctor.email }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
